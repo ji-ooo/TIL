@@ -1,20 +1,18 @@
-from collections import deque
-
 import sys
 sys.stdin = open('4843.txt')
 
 
-def bubble_sort(arr):
+def bubble_sort(arr):  # 버블
     l = len(arr)
     for i in range(l-1, 0, -1):
         for j in range(0, i):
             if arr[j] > arr[j+1]:
                 arr[j], arr[j+1] = arr[j+1], arr[j]
 
-    return deque(arr)
+    return arr
 
 
-def counting_sort(arr):
+def counting_sort(arr):  # 카운팅
     l = len(arr)
     std_arr = [0 for _ in range(l)]
     cnt_arr = [0 for _ in range(101)]
@@ -29,19 +27,19 @@ def counting_sort(arr):
         cnt_arr[index] -= 1
         std_arr[cnt_arr[index]] = index
 
-    return deque(arr)
+    return arr
 
 
-def selection_sort(arr):
+def selection_sort(arr):  # 선택
     l = len(arr)
     for i in range(l):
-        minIdx = i
+        mini = i
         for j in range(i+1, l):
-            if arr[minIdx] > arr[j]:
-                minIdx = j
-        arr[i], arr[minIdx] = arr[minIdx], arr[i]
+            if arr[mini] > arr[j]:
+                mini = j
+        arr[i], arr[mini] = arr[mini], arr[i]
 
-    return deque(arr)
+    return arr
 
 
 T = int(input())
@@ -49,15 +47,21 @@ for tc in range(1, T+1):
     N = int(input())
     arr = list(map(int, input().split()))
 
-    arr = selection_sort(arr)
+    # bubble_sort(arr)
+    # counting_sort(arr)
+    selection_sort(arr)
 
     result = ''
+    # 리스트 10까지만 정렬
+    # i가 짝수이면 최대값, 홀수이면 최소값 pop 해서 결과에 저장
     for i in range(10):
         if i % 2 == 0:
             result += str(arr.pop())
         else:
-            result += str(arr.popleft())
+            result += str(arr.pop(0))
         result += ' '
+
+    # 공백 제거
     result = result[:-1]
     print(f'#{tc} {result}')
 

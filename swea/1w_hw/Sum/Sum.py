@@ -16,11 +16,13 @@ for tc in range(1, T + 1):
 
     # 열, 대각선 합 구하면서 최대 합과 비교 후 저장
     tmp_cross = 0
+    tmp_rev_cross = 0
     for i in range(100):
         tmp_y = 0
         tmp_cross += arr[i][i]
+        tmp_rev_cross += arr[i][99-i]
         for j in range(100):
             tmp_y += arr[j][i]
-        max_sum = max(max_sum, tmp_y, tmp_cross)
+        max_sum = max(max_sum, tmp_y, tmp_cross, tmp_rev_cross)
         tmp_cross = 0
     print(f'#{tc} {max_sum}')
