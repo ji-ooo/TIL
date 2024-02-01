@@ -3,28 +3,28 @@ N, C, W = map(int, input().split())
 trees = []
 for _ in range(N):
     trees.append(int(input()))
-trees.sort()
 
 result = 0
-while trees:
-    length = trees[-1]
-    while length > 0:
-        cut = 0
-        cnt = 0
-        for tree in trees:
-            if tree//length * C < tree//length * W:
-                if tree%length != 0:
-                    cut += tree//length
-                else:
-                    cut += tree//length -1
-                cnt += tree//length
-            else:
-                if tree == length:
-                    cnt += 1
-        
-        money = W * length * cnt - C * cut
-        result = max(result, money)
-        length -= 1
+length = 10000
+while length > 0:
+    cut = 0
+    cnt = 0
+    for tree in trees:
+        if tree < length:
+            continue
 
-    trees = trees[1:]
+        tmp = tree//length
+        tmp_cnt = tmp_cut = tmp
+
+        if tree%length == 0:
+            tmp_cut -= 1
+        
+        if tmp_cut*C < tmp_cnt*W*length:
+            cnt += tmp_cnt
+            cut += tmp_cut
+
+    money = W * length * cnt - C * cut
+    result = max(result, money)
+    length -= 1
+
 print(result)

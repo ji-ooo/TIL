@@ -14,6 +14,7 @@ for _ in range(10):
     rod_list = []
     for rod in range(100):
         if line[rod] == 1:
+
             rod_list.append(rod)
         if line[rod] == 2:
             rod_list.append(rod)
