@@ -1,6 +1,7 @@
 import sys
 sys.stdin = open('4839.txt')
 
+
 # 이진탐색 함수
 def binarysearch(start, end, key):
     # 세는 횟수, 1부터 시작
