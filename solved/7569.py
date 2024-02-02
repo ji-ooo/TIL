@@ -1,10 +1,12 @@
 from collections import deque
 
 
-def tomato(tmt_lst):
-    que = deque(tmt_lst)
+def tomato(lst):
+    que = deque(lst)
     global visited
     global days
+    global tmt_lst
+    tmt_lst = []
     while que:
         v = que.pop()
         i, j, k = v
@@ -18,8 +20,6 @@ def tomato(tmt_lst):
                     tmt_lst.append((nz, ny, nx))
                     arr[nz][ny][nx] = 1
     days += 1
-    que.append(tmt_lst)
-    return tmt_lst
 
 M, N, H = map(int, input().split())
 
@@ -44,7 +44,8 @@ for i in range(H):
                 if (i, j, k) not in visited:
                     tmt_lst.append((i, j, k))
 
-
+while tmt_lst:
+    tomato(tmt_lst)
 
 for i in range(H):
     for j in range(N):
