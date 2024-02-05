@@ -1,6 +1,7 @@
 import sys
 sys.stdin = open('1979.txt')
 
+
 def search_x(x, y):
     for i in range(K):
         if arr[x + i][y] != 1:
