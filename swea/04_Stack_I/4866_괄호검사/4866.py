@@ -21,9 +21,7 @@ for tc in range(1, T+1):
             else:
                 break
     else:
-        if bracket:
-            result = 0
-        else:
+        if not bracket:
             result = 1
 
     print(f'#{tc} {result}')
