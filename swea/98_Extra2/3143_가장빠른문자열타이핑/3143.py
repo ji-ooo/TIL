@@ -8,4 +8,3 @@ for tc in range(1, T+1):
 
     result = len(A) - cnt * (len(B)-1)
     print(f'#{tc} {result}')
-

@@ -1,23 +1,25 @@
 import sys
 sys.stdin = open('4874.txt')
 
-from collections import deque
-
 
 def forth_cal(line):
-    forth = deque()
+    forth = []
     for i in line:
         if i in {'+', '-', '*', '/'}:
             if len(forth) >= 2:
-                a, b = forth.pop(), forth.pop()
+                a, b = forth[-2], forth[-1]
                 if i == '+':
-                    forth.append(a + b)
+                    forth[-2] = a + b
                 elif i == '-':
-                    forth.append(a - b)
+                    forth[-2] = a - b
                 elif i == '*':
-                    forth.append(a * b)
+                    forth[-2] = a * b
                 elif i == '/':
-                    forth.append(a // b)
+                    if b != 0:
+                        forth[-2] = a // b
+                    else:
+                        return 'error'
+                forth.pop()
             else:
                 return 'error'
 
