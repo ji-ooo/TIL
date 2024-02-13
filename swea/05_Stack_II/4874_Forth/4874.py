@@ -5,7 +5,7 @@ sys.stdin = open('4874.txt')
 def forth_cal(line):
     forth = []
     for i in line:
-        if i in {'+', '-', '*', '/'}:
+        if i in ['+', '-', '*', '/']:
             if len(forth) >= 2:
                 a, b = forth[-2], forth[-1]
                 if i == '+':
@@ -15,10 +15,7 @@ def forth_cal(line):
                 elif i == '*':
                     forth[-2] = a * b
                 elif i == '/':
-                    if b != 0:
-                        forth[-2] = a // b
-                    else:
-                        return 'error'
+                    forth[-2] = a // b
                 forth.pop()
             else:
                 return 'error'
