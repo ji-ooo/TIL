@@ -19,7 +19,7 @@ for tc in range(1, T+1):
 
     directions = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
-    visited = []
+    visited = [[False] * N for _ in range(N)]
     que = deque([current])
 
     flag = False
@@ -32,7 +32,7 @@ for tc in range(1, T+1):
             nx = x + dx
             ny = y + dy
             if 0 <= nx < N and 0 <= ny < N:
-                if arr[nx][ny] == 0:
+                if arr[nx][ny] == 0 and not visited[nx][ny]:
                     que.append((nx, ny))
                     arr[nx][ny] = 2
                 elif arr[nx][ny] == 3:
