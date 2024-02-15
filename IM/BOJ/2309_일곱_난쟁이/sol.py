@@ -28,5 +28,5 @@ def back(i, sum, lst):
 arr = [int(input()) for _ in range(9)]
 result = []
 back(0, 0, [])
-print(arr)
-print(result)
+result.sort()
+print(*result, sep = '\n')
