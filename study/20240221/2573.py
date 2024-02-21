@@ -1,6 +1,5 @@
 from collections import deque
-from pprint import pprint as print
-
+# from pprint import pprint as print
 N, M = map(int, input().split())
 arr = []
 for _ in range(N):
@@ -31,25 +30,27 @@ def melt(v, arr, visited):
 
         if arr[x][y] < 0:
             arr[x][y] = 0
-    print(arr)
-    print(cnt)
-    print(result)
-    print('---')
+    
 
 result = 0
 while True:
     visited = [[0] * M for _ in range(N)]
-    result += 1
+    
     cnt = 0
     for i in range(N):
         for j in range(M):
             if arr[i][j] != 0 and not visited[i][j]:
                 melt((i, j), arr, visited)
                 cnt += 1
-    if cnt >2:
+                # print(arr)
+                # print(cnt)
+                # print(result)
+                # print('---')
+    if cnt >=2:
         break
     elif cnt == 0:
+        result = 0
         break            
-    
+    result += 1
 
 print(result)
