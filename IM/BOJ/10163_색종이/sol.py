@@ -1,7 +1,6 @@
 import sys
 sys.stdin = open('input.txt')
 
-
 N = int(input())
 paper = []
 for _ in range(N):
