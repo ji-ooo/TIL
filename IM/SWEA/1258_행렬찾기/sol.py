@@ -36,7 +36,7 @@ for tc in range(1, int(input())+1):
             if arr[i][j] != 0 and not visited[i][j]:
                 result.append(dfs((i, j)))
 
-    result.sort(key=lambda x: x[0] * x[1])
+    result.sort(key=lambda x: (x[0] * x[1], x[0]))
     print(f'#{tc} {len(result)}', end=' ')
     for i in range(len(result)):
         print(f"{result[i][0]} {result[i][1]}", end=' ')

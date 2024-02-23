@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('9490.txt')
+sys.stdin = open('input.txt')
 
 
 def bal(x, y, c, balloon):
