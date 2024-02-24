@@ -1,5 +1,5 @@
 import sys
-sys.stdin = open('1220.txt')
+sys.stdin = open('input.txt')
 
 
 def move(v):
