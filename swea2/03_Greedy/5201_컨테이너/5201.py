@@ -11,12 +11,10 @@ for tc in range(1, int(input())+1):
     result = 0
     while t:
         tone = t.pop()
-        flag = False
         while w:
             weight = w.pop()
             if tone >= weight:
                 result += weight
-                flag = True
                 break
 
     print(f'#{tc} {result}')
