@@ -27,7 +27,7 @@ for case in range(1, 7):
         i += 1
     maxi = max(maxi, tmp)
 print(maxi)
-
+print(link)
 
 
 
