@@ -1,68 +1,36 @@
 N = int(input())
 num = [list(map(int, input().split())) for _ in range(N)]
 
-result = []
+base_lst = []
+for i in range(1, 10):
+    for j in range(1, 10):
+        for k in range(1, 10):
+            if i == j or j == k or k == i:
+                continue
+            else:
+                base_lst.append([i, j, k])
 
-s2 = []
-s1 = []
-s0 = []
+i = 0
+while i != len(base_lst):
+    now_n = base_lst[i]
+    r = False
 
-for n, s, b in num:
-    if s == 3:
-        print(1)
-        break
-    elif s == 2:
-        s2.append(n)
-    elif s == 1:
-        s1.append((n, b))
-    else:
-        s0.append((n, b))
+    for comp_n in num:
+        t = list(map(int, str(comp_n[0])))
+        S, B = comp_n[1], comp_n[2]
+        s = b = 0
+        for x in range(3):
+            if now_n[x] == t[x]:
+                s += 1
+            elif now_n[x] in t:
+                b += 1
 
-able = []
-if len(s2) > 1:
-    a = str(s2[0])
-    b = str(s2[1])
-    if a[0] == b[0] and a[1] == b[1]:
-        for i in range(1, 10):
-            if i != a[2]:
-                able.append(str(a[0]) + str(a[1]) + str(i))
-    elif a[1] == b[1] and a[2] == b[2]:
-        for i in range(1, 10):
-            if i != a[0]:
-                able.append(str(a[0]) + str(a[1]) + str(i))
-    else:
-        for i in range(1, 10):
-            if i != a[1]:
-                able.append(str(a[0]) + str(i) + str(a[2]))
-else:
-    a = str(s2[0])
-    for i in range(1, 10):
-            if i != a[2]:
-                able.append(str(a[0]) + str(a[1]) + str(i))
-    for i in range(1, 10):
-            if i != a[0]:
-                able.append(str(a[0]) + str(a[1]) + str(i))
-    for i in range(1, 10):
-            if i != a[1]:
-                able.append(str(a[0]) + str(i) + str(a[2]))
-print(able)
+        if s != S or b != B:
+            r = True
+            base_lst.remove(now_n)
+            break
 
-# for x in s1:
+    if r: continue
+    else: i += 1
 
-
-
-'''
-생각하고 있을 가능성이 있는 답 ?
-은 생각 할 수 없는 거 다 빼라는 뜻
-
-3 st
-2s
-1s 2b
-1s 1b
-1s 0b
-0s 3b
-0s 2b
-0s 1b
-0s 0b
-
-'''
+print(len(base_lst))
