@@ -1,34 +1,20 @@
 from math import trunc
-
 X, Y = map(int, input().split())
-
-z = Y/X*100
-Z = trunc(z)
-
-v = X//100
-cnt = 0
-i = 2
-while trunc(z) != Z+1:
-    v = X//10**i
-    while z-(Z+1) < 0:
-        X += v
-        Y += v
-        cnt += v
-        z = Y/X*100
-
-    while z-(Z+1) > 0:
-        X -= v
-        Y -= v
-        cnt -= v
-        z = Y/X*100
-    print(z)
-    i += 1
-print(z, Z, cnt)
-
-
+Z = trunc(100*Y/X)
 '''
-X += a
-Y += a
-trunc(z) 가 +1 될때까지
-
+파이썬 실수 자료형 소숫점 오류 ?
 '''
+if Z >= 99:
+    print(-1)
+else:
+    start = 1
+    end = X
+    while start <= end:
+        mid = (start+end)//2
+        if Z == trunc(100*(Y+mid)/(X+mid)):
+            start = mid+1
+        elif Z < trunc(100*(Y+mid)/(X+mid)):
+            end = mid-1
+        else:
+            break
+    print(start)
