@@ -5,9 +5,9 @@ from collections import deque
 ds = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
 
-def backtrack(count, N, arr):
+def backtrack(cnt, arr):
     global result
-    if count == N:
+    if cnt == N:
         tmp_cnt = 0
         for i in range(H):
             for j in range(W):
@@ -18,18 +18,22 @@ def backtrack(count, N, arr):
             result = tmp_cnt
         return
 
-    for i in range(W):
+    for col in range(W):
         new_arr = [line[:] for line in arr]
-        idx = 0
+        row = 0
 
-        while idx < H and new_arr[idx][i] == 0:
-            idx += 1
+        while row < H and not new_arr[row][col]:
+            row += 1
 
-        if idx != H:
-            brekin(idx, i, new_arr)
+        if row != H:
+            brekin(row, col, new_arr)
             grav(new_arr)
+            flag = brkinpoint(new_arr)
 
-        backtrack(count + 1, N, new_arr)
+            if flag:
+                backtrack(cnt+1, new_arr)
+            else:
+                backtrack(N, new_arr)
 
 
 def brekin(x, y, arr):
@@ -67,16 +71,22 @@ def grav(arr):
             arr[H - 1 - j][i] = brick.pop()
 
 
-T = int(input())
+def brkinpoint(arr):
+    for i in range(H):
+        for j in range(W):
+            if arr[i][j]:
+                return True
+    return False
 
-for testcase in range(1, T + 1):
+
+for tc in range(1, int(input())+1):
     N, W, H = map(int, input().split())
     arr = [list(map(int, input().split())) for _ in range(H)]
 
     result = W * H
-    backtrack(0, N, arr)
+    backtrack(0, arr)
 
-    print(f'#{testcase} {result}')
+    print(f'#{tc} {result}')
 
 # def mk_link(v, k):
 #     x, y = v

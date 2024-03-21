@@ -32,4 +32,4 @@ N, M = map(int, input().split())
 
 arr = [list(map(int, input().split())) for _ in range(N)]
 
-backtrack(0, 0) # 치킨 집 개수, 거리
+# backtrack(0, 0) # 치킨 집 개수, 거리
