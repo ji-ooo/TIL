@@ -5,6 +5,9 @@ def bfs(v, cnt):
     global result
     x, y = v
 
+    if result == 26:
+        return
+
     result = max(cnt, result)
     for dx, dy in dr:
         nx, ny = x + dx, y + dy

@@ -10,5 +10,5 @@ for i in range(2, n + 1):
         j += 1
 
     dp.append(mini + 1)
+# print(dp)
 print(dp[n])
-print(dp)
