@@ -1,6 +1,5 @@
 N = int(input())
 nums = list(map(int, input().split()))
-
 nums.sort()
 
 ans = 0
@@ -21,8 +20,10 @@ for i in range(N):
         if nums[s] + nums[e] == nums[i]:
             ans += 1
             break
+
         elif nums[s] + nums[e] < nums[i]:
             s += 1
+
         else:
             e -= 1
 

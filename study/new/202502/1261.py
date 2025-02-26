@@ -8,12 +8,12 @@ arr = [list(map(int, input().strip())) for _ in range(M)]
 
 dr = [(0, 1), (0, -1), (1, 0), (-1, 0)]
 
-
 visited = [[1e9] * N for _ in range(M)]
 visited[0][0] = 0
 
 stack = []
 heappush(stack, (0, 0, 0))
+
 while stack:
     b, x, y = heappop(stack)
     if x == M-1 and y == N-1:
