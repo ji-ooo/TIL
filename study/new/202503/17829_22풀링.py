@@ -1,12 +1,6 @@
 import sys
 input = sys.stdin.readline
 
-N = int(input())
-arr = [list(map(int, input().split())) for _ in range(N)]
-
-dr = [(0, 0), (0, 1), (1, 0), (1, 1)]
-
-
 def pool(v):
     x, y = v
     num = []
@@ -19,6 +13,11 @@ def pool(v):
 
     return num[-2]
 
+
+N = int(input())
+arr = [list(map(int, input().split())) for _ in range(N)]
+
+dr = [(0, 0), (0, 1), (1, 0), (1, 1)]
 
 while len(arr) > 1:
     new_arr = []
